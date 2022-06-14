@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+<!--    <link th:href="@{/css/style.css}" th:rel="stylesheet"/>-->
+</head>
+<body>
+<div class="wrapper">
+    <div class="twoWrapper">
+        <h1>Create user page!!!</h1>
+        <form th:action="@{/updateUser}" th:object="${user}" th:method="post">
+            <input type="hidden" id="id" th:placeholder="name" th:field="*{id}">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+            <label  for="name">Name: </label>
+            <input type="text" id="name" th:placeholder="name" th:field="*{name}">
+            <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname Error</p>
+            <label  for="surname">Surname: </label>
+            <input type="text" id="surname" th:placeholder="surname" th:field="*{surname}">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+            <label  for="email">email: </label>
+            <input type="text" id="email" th:placeholder="email" th:field="*{email}">
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</div>
+<!--<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
+<!--<form th:action="@{/logout}" method="post">-->
+<!--    <input type="submit" value="Sign Out"/>-->
+<!--</form>-->
+</body>
+</html>

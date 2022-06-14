@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+<!--    <link th:href="@{/css/style.css}" th:rel="stylesheet"/>-->
+</head>
+<body>
+<script>
+    function rowClicked(value) {
+        location.href = "/updateUserPage?id=" + value;
+    }
+</script>
+<div class="wrapper">
+    <div class="twoWrapper">
+        <h1>Home page!!!</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user : ${users}">
+                <tr  style="cursor: pointer"
+                     th:onclick="'javascript:rowClicked(\'' + ${user.getId()} + '\');'">
+                    <td th:text="${user.getName()}">name user</td>
+                    <td th:text="${user.getSurname()}">surname user</td>
+                    <td th:text="${user.getEmail()}">email user</td>
+                </tr>
+            </th:block>
+            </tbody>
+            <tr>
+                <td>
+                    <a href="/createUserPage">Create <user></user></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!--<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
+<!--<form th:action="@{/logout}" method="post">-->
+<!--    <input type="submit" value="Sign Out"/>-->
+<!--</form>-->
+</body>
+</html>
+
